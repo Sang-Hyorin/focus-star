@@ -17,4 +17,4 @@ if [ "${1:-}" = --test ]; then "$app/Contents/MacOS/FocusStarMac" --self-test; f
 cp "$root/settings.example.json" "$output/settings.json"
 cp "$root/README.md" "$output/README.md"
 cp "$root/LICENSE" "$output/LICENSE"
-ditto -c -k --sequesterRsrc --keepParent "$output" "$root/dist/FocusStar-macOS.zip"
+ditto -c -k --sequesterRsrc "$output" "$root/dist/FocusStar-macOS.zip"
