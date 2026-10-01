@@ -9,7 +9,7 @@ if (-not $CompilerPath) {
     $CompilerPath = Join-Path $env:ProgramFiles "dotnet/sdk/$($sdk.Split(' ')[0])/Roslyn/bincore/csc.dll"
 }
 $framework = Join-Path $env:WINDIR 'Microsoft.NET/Framework64/v4.0.30319'
-$references = @('mscorlib','System','System.Core','System.Drawing','System.Windows.Forms','System.Runtime.Serialization','System.IO.Compression','System.IO.Compression.FileSystem') | ForEach-Object { '/r:' + (Join-Path $framework "$_.dll") }
+$references = @('mscorlib','System','System.Core','System.Xml','System.Drawing','System.Windows.Forms','System.Runtime.Serialization','System.IO.Compression','System.IO.Compression.FileSystem') | ForEach-Object { '/r:' + (Join-Path $framework "$_.dll") }
 $sources = @('LocalActivityRecorder.cs','CrossDayArchive.cs') | ForEach-Object { Join-Path $projectRoot "windows-source/$_" }
 function Compile([string[]]$Arguments) {
     if ($CompilerPath.EndsWith('.dll')) { & dotnet $CompilerPath @Arguments }
