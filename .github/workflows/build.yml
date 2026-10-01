@@ -1,0 +1,27 @@
+name: Build and test
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: ./scripts/build-windows.ps1 -Test
+        shell: pwsh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FocusStar-Windows
+          path: dist/FocusStar-Windows.zip
+  macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash scripts/build-macos.sh --test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FocusStar-macOS
+          path: dist/FocusStar-macOS.zip

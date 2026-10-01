@@ -1,0 +1,14 @@
+{
+  "pollIntervalSeconds": 30,
+  "inputActiveSeconds": 60,
+  "workAppIdleGraceSeconds": 180,
+  "dailyGoalMinutes": 480,
+  "workProcessNames": [
+    "Code",
+    "WINWORD",
+    "POWERPNT",
+    "wps",
+    "wpp",
+    "et"
+  ]
+}
